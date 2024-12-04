@@ -166,15 +166,15 @@ func processCierre(cierreCollection, checkinCollection *mongo.Collection, cierre
 
 	// Mover checkins a la colección correspondiente y generar referencias
 	for _, checkin := range cierre.LstCheckins {
-		// year := checkin.FechaIngreso.Year()
-		// collectionName := fmt.Sprintf("checkins_%d", year)
+		year := checkin.FechaIngreso.Year()
+		collectionName := fmt.Sprintf("checkins_%d", year)
 
-		// // Insertar el checkin en la colección correspondiente
-		// _, err := checkinCollection.Database().Collection(collectionName).InsertOne(context.TODO(), checkin)
-		// if err != nil {
-		// 	log.Printf("Error insertando checkin %s: %v", checkin.ID, err)
-		// 	continue
-		// }
+		// Insertar el checkin en la colección correspondiente
+		_, err := checkinCollection.Database().Collection(collectionName).InsertOne(context.TODO(), checkin)
+		if err != nil {
+			log.Printf("Error insertando checkin %s: %v", checkin.ID, err)
+			continue
+		}
 
 		checkinIDs = append(checkinIDs, checkin.ID)
 		// log.Printf("Checkin %s movido a la colección %s", checkin.ID, collectionName)
