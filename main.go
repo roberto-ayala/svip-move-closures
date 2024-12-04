@@ -169,7 +169,16 @@ func main() {
 	log.SetOutput(logFile)
 
 	// Conexión a MongoDB
-	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
+	user := Getenv("USER", "")
+	pass := Getenv("PASS", "")
+	host := Getenv("HOST", "localhost")
+	port := Getenv("PORT", "27017")
+
+	cs := fmt.Sprintf("mongodb://%s:%s", host, port)
+	if user != "" && pass != "" {
+		cs = fmt.Sprintf("mongodb://%s:%s@%s:%s", user, pass, host, port)
+	}
+	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI(cs))
 	if err != nil {
 		log.Fatal(err)
 	}
