@@ -19,10 +19,10 @@ import (
 
 // Struct para el salón
 type Salon struct {
-	ID       string `bson:"_id"`
-	Nombre   string `bson:"nombre,omitempty"`
-	Pais     string `bson:"pais,omitempty"`
-	Terminal int    `bson:"terminal,omitempty"`
+	ID       *string `bson:"_id"`
+	Nombre   *string `bson:"nombre,omitempty"`
+	Pais     *string `bson:"pais,omitempty"`
+	Terminal *int    `bson:"terminal,omitempty"`
 	// private Long tarifaIngresoSinConvenio;
 	// private List<IpEquipo> lstIpEquipo;
 	// private List<BancoSalon> bancos;
@@ -30,15 +30,15 @@ type Salon struct {
 
 // Struct para el usuario
 type User struct {
-	ID                    string      `bson:"_id"`
-	Username              string      `bson:"username,omitempty"`
-	Password              string      `bson:"password,omitempty"`
-	FirstName             string      `bson:"firstName,omitempty"`
-	LastName              string      `bson:"lastName,omitempty"`
-	AccountNonExpired     bool        `bson:"accountNonExpired,omitempty"`
-	AccountNonLocked      bool        `bson:"accountNonLocked,omitempty"`
-	CredentialsNonExpired bool        `bson:"credentialsNonExpired,omitempty"`
-	Enabled               bool        `bson:"enabled,omitempty"`
+	ID                    *string     `bson:"_id"`
+	Username              *string     `bson:"username,omitempty"`
+	Password              *string     `bson:"password,omitempty"`
+	FirstName             *string     `bson:"firstName,omitempty"`
+	LastName              *string     `bson:"lastName,omitempty"`
+	AccountNonExpired     *bool       `bson:"accountNonExpired,omitempty"`
+	AccountNonLocked      *bool       `bson:"accountNonLocked,omitempty"`
+	CredentialsNonExpired *bool       `bson:"credentialsNonExpired,omitempty"`
+	Enabled               *bool       `bson:"enabled,omitempty"`
 	Authorities           []Authority `bson:"authorities,omitempty"`
 }
 
@@ -83,54 +83,54 @@ type Reversa struct {
 
 // Struct para el checkin
 type Checkin struct {
-	ID                   string    `bson:"_id"`
-	CantidadAcompanantes int       `bson:"cantidadAcompanantes,omitempty"`
-	Firma                string    `bson:"firma,omitempty"`
+	ID                   *string   `bson:"_id"`
+	CantidadAcompanantes *int      `bson:"cantidadAcompanantes,omitempty"`
+	Firma                *string   `bson:"firma,omitempty"`
 	FechaIngreso         time.Time `bson:"fechaIngreso,omitempty"`
-	Sincronizado         bool      `bson:"sincronizado,omitempty"`
+	Sincronizado         *bool     `bson:"sincronizado,omitempty"`
 
-	IdCierreServer          string `bson:"idCierreServer,omitempty"`
-	CodigoAutorizacionBanco string `bson:"codigoAutorizacionBanco,omitempty"`
+	IdCierreServer          *string `bson:"idCierreServer,omitempty"`
+	CodigoAutorizacionBanco *string `bson:"codigoAutorizacionBanco,omitempty"`
 
-	CodigoAutorizacionTbk string `bson:"codigoAutorizacionTbk,omitempty"`
-	TotalPagadoTbk        int64  `bson:"totalPagadoTbk,omitempty"`
-	TotalVoucherConvenio  int64  `bson:"totalVoucherConvenio,omitempty"`
-	CantidadAcoPagadoTbk  int    `bson:"cantidadAcoPagadoTbk,omitempty"`
-	CantidadAcoEnConvenio int    `bson:"cantidadAcoEnConvenio,omitempty"`
-	NumeroTarjeta         string `bson:"numeroTarjeta,omitempty"`
-	Turno                 string `bson:"turno,omitempty"`
+	CodigoAutorizacionTbk *string `bson:"codigoAutorizacionTbk,omitempty"`
+	TotalPagadoTbk        *int64  `bson:"totalPagadoTbk,omitempty"`
+	TotalVoucherConvenio  *int64  `bson:"totalVoucherConvenio,omitempty"`
+	CantidadAcoPagadoTbk  *int    `bson:"cantidadAcoPagadoTbk,omitempty"`
+	CantidadAcoEnConvenio *int    `bson:"cantidadAcoEnConvenio,omitempty"`
+	NumeroTarjeta         *string `bson:"numeroTarjeta,omitempty"`
+	Turno                 *string `bson:"turno,omitempty"`
 
-	IdSkyNumber         string `bson:"idSkyNumber,omitempty"`
-	NumeroReserva       string `bson:"numeroReserva,omitempty"`
-	NumeroVuelo         string `bson:"numeroVuelo,omitempty"`
-	NombreAcompanante   string `bson:"nombreAcompanante,omitempty"`
-	ApellidoAcompanante string `bson:"apellidoAcompanante,omitempty"`
-	CodigoPax           string `bson:"codigoPax,omitempty"`
+	IdSkyNumber         *string `bson:"idSkyNumber,omitempty"`
+	NumeroReserva       *string `bson:"numeroReserva,omitempty"`
+	NumeroVuelo         *string `bson:"numeroVuelo,omitempty"`
+	NombreAcompanante   *string `bson:"nombreAcompanante,omitempty"`
+	ApellidoAcompanante *string `bson:"apellidoAcompanante,omitempty"`
+	CodigoPax           *string `bson:"codigoPax,omitempty"`
 
-	IngresoEspecial        bool    `bson:"ingresoEspecial,omitempty"`
-	SincronizadoBancoChile bool    `bson:"sincronizadoBancoChile,omitempty"`
+	IngresoEspecial        *bool   `bson:"ingresoEspecial,omitempty"`
+	SincronizadoBancoChile *bool   `bson:"sincronizadoBancoChile,omitempty"`
 	ResponseBancoChile     string  `bson:"responseBancoChile,omitempty"`
 	Reversa                Reversa `bson:"reversa,omitempty"`
 
-	ServicioBChile            bool  `bson:"servicioBChile,omitempty"`
-	ReCheckin                 bool  `bson:"reCheckin,omitempty"`
-	TitularAmount             int64 `bson:"titularAmount,omitempty"`
-	ItauAccessExchange        bool  `bson:"itauAccessExchange,omitempty"`
-	ItauAccessExchangeOffline bool  `bson:"itauAccessExchangeOffline,omitempty"`
+	ServicioBChile            *bool  `bson:"servicioBChile,omitempty"`
+	ReCheckin                 *bool  `bson:"reCheckin,omitempty"`
+	TitularAmount             *int64 `bson:"titularAmount,omitempty"`
+	ItauAccessExchange        *bool  `bson:"itauAccessExchange,omitempty"`
+	ItauAccessExchangeOffline *bool  `bson:"itauAccessExchangeOffline,omitempty"`
 
-	Transaction                int64  `bson:"transaction,omitempty"`
-	PudahuelTransactionMessage string `bson:"pudahuelTransactionMessage,omitempty"`
+	Transaction                *int64  `bson:"transaction,omitempty"`
+	PudahuelTransactionMessage *string `bson:"pudahuelTransactionMessage,omitempty"`
 
 	// Deprecated fields
-	BancoChileCuposLibres          int `bson:"bancoChileCuposLibres,omitempty"`
-	BancoChileCuposPremium         int `bson:"bancoChileCuposPremium,omitempty"`
-	BancoChileCuposPromocionales   int `bson:"bancoChileCuposPromocionales,omitempty"`
-	BancoChileCuposIngresoReducido int `bson:"bancoChileCuposIngresoReducido,omitempty"`
+	BancoChileCuposLibres          *int `bson:"bancoChileCuposLibres,omitempty"`
+	BancoChileCuposPremium         *int `bson:"bancoChileCuposPremium,omitempty"`
+	BancoChileCuposPromocionales   *int `bson:"bancoChileCuposPromocionales,omitempty"`
+	BancoChileCuposIngresoReducido *int `bson:"bancoChileCuposIngresoReducido,omitempty"`
 
-	MontoConvenio            int64 `bson:"montoConvenio,omitempty"`
-	MontoSinConvenio         int64 `bson:"montoSinConvenio,omitempty"`
-	FalabellaRegister        bool  `bson:"falabellaRegister,omitempty"`
-	FalabellaRegisterOffline bool  `bson:"falabellaRegisterOffline,omitempty"`
+	MontoConvenio            *int64 `bson:"montoConvenio,omitempty"`
+	MontoSinConvenio         *int64 `bson:"montoSinConvenio,omitempty"`
+	FalabellaRegister        *bool  `bson:"falabellaRegister,omitempty"`
+	FalabellaRegisterOffline *bool  `bson:"falabellaRegisterOffline,omitempty"`
 
 	AccessMode string `bson:"accessMode,omitempty"`
 
@@ -142,8 +142,8 @@ type Checkin struct {
 	// CheckinRel Checkin   `bson:"checkinRel,omitempty"`
 
 	// Integrations
-	Integration string    `bson:"integration,omitempty"`
-	Benefits    []Benefit `bson:"benefits,omitempty"`
+	// Integration string    `bson:"integration,omitempty"`
+	// Benefits    []Benefit `bson:"benefits,omitempty"`
 }
 
 // Struct para el cierre
@@ -154,13 +154,20 @@ type Cierre struct {
 	Salon       Salon     `bson:"salon,omitempty"`
 	LstCheckins []Checkin `bson:"lstCheckins,omitempty"`
 	Checkins    []string  `bson:"checkins,omitempty"`
-	Origin      string    `bson:"origin,omitempty"`
+	Origin      *string   `bson:"origin,omitempty"`
 	Class       string    `bson:"_class,omitempty"`
 }
 
 var wg sync.WaitGroup
 
 func main() {
+	// Set logger
+	logFile, err := os.OpenFile("error.log", os.O_CREATE|os.O_APPEND|os.O_RDWR, 0644)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	log.SetOutput(logFile)
+
 	// Conexión a MongoDB
 	client, err := mongo.Connect(context.TODO(), options.Client().ApplyURI("mongodb://localhost:27017"))
 	if err != nil {
@@ -256,11 +263,11 @@ func processCierre(cierreCollection, checkinCollection *mongo.Collection, cierre
 		// Insertar el checkin en la colección correspondiente
 		_, err := checkinCollection.Database().Collection(collectionName).InsertOne(context.TODO(), checkin)
 		if err != nil {
-			log.Printf("Error insertando checkin %s: %v", checkin.ID, err)
+			log.Printf("Error insertando checkin %s: %v", *checkin.ID, err)
 			continue
 		}
 
-		checkinIDs = append(checkinIDs, checkin.ID)
+		checkinIDs = append(checkinIDs, *checkin.ID)
 		// log.Printf("Checkin %s movido a la colección %s", checkin.ID, collectionName)
 	}
 
