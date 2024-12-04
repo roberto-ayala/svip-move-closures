@@ -251,6 +251,8 @@ func processCierre(cierreCollection, checkinCollection *mongo.Collection, cierre
 		year := checkin.FechaIngreso.Year()
 		collectionName := fmt.Sprintf("checkins_%d", year)
 
+		checkin.Salon = cierre.Salon
+
 		// Insertar el checkin en la colección correspondiente
 		_, err := checkinCollection.Database().Collection(collectionName).InsertOne(context.TODO(), checkin)
 		if err != nil {
